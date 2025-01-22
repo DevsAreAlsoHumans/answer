@@ -1,0 +1,43 @@
+{
+    "quizz": [
+        {
+            "name": "Quizz 1",
+            "questions": [
+                {
+                    "question": "Question 1",
+                    "answers": [
+                        {
+                            "answer": "Réponse 1",
+                            "isAnswer": true
+                        },
+                        {
+                            "answer": "Réponse 2",
+                            "isAnswer": false
+                        },
+                        {
+                            "answer": "Réponse 3",
+                            "isAnswer": false
+                        },
+                        {
+                            "answer": "Réponse 4",
+                            "isAnswer": false
+                        }
+                    ]
+                },
+                {
+                    "question": "Question 2",
+                    "answers": [
+                        {
+                            "answer": "Réponse 1",
+                            "isAnswer": false
+                        },
+                        {
+                            "answer": "Réponse 2",
+                            "isAnswer": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
