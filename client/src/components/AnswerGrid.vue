@@ -1,0 +1,3 @@
+<template>
+    <AnswerCard />
+</template>

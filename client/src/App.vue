@@ -1,15 +1,16 @@
 <template>
-  <HelloWorld msg="Bienvenue sur le projet Answer !"/>
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> | 
+      <router-link to="/quizz-list">QuizzList</router-link>
+    </nav>
+    <router-view></router-view>  <!-- Affiche le composant pour la route actuelle -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
 
