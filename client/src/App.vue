@@ -40,9 +40,15 @@ export default {
     this.errorMessage = 'Le pseudonyme ne doit pas contenir d\'espaces.';
     this.username = '';
   } else if (this.username.length > 20) {
-    this.errorMessage = 'Veuillez saisir un pseudonyme de 20 caractères maximum.';
+    this.errorMessage = 'Veuillez saisir un pseudonyme 20 caractères maximum.';
     this.username = '';
-  } else {
+  } 
+    else if (this.username.length < 4) {
+      this.errorMessage = 'Veuillez saisir un pseudonyme 4 caractères minimum.';
+      this.username = '';
+    }
+   else {
+    
     const escapedUsername = this.username;
     localStorage.setItem('username', escapedUsername);
     this.storedUsername = escapedUsername;
