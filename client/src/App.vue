@@ -28,8 +28,11 @@ export default {
   },
   methods: {
     saveUsername() {
+  
+  // Empêche les espaces
   const noSpacesRegex = /^\S+$/;
 
+  // Vérification de la saisie du pseudo utilisateur
   if (this.username.trim() === '') {
     this.errorMessage = 'Veuillez saisir un pseudonyme.';
     this.username = '';
