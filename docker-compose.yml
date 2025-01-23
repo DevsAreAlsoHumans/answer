@@ -1,0 +1,10 @@
+services:
+  # Front-end (client)
+  client:
+    environment:
+      - APP_ENV
+    container_name: answer-client
+    image: thibaultyvd/answer:latest
+    restart: unless-stopped
+    ports:
+      - "8080:3000" 
