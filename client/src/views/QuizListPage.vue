@@ -15,23 +15,29 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import quizData from '../assets/data.json'
+import { instance as axios } from '../services/axios';
 
-// Données des quiz
-const quizzes = ref(quizData.quizz)
+const quizzes = ref([])
 
-// Récupération du pseudonyme stocké dans localStorage
 const username = ref(localStorage.getItem('username') || '')
 
-// Utilisation de Vue Router pour la navigation
 const router = useRouter()
 
-// Fonction de redirection vers la page d'accueil
 const goToHome = () => {
   router.push('/')
 }
+
+// Requête pour récupérer les quiz
+onMounted(async () => {
+  try {
+    const response = await axios.get(`/quizz/`);
+    quizzes.value = response.data.message;
+  } catch (error) {
+    console.error("Erreur lors de la récupération du quiz :", error);
+  }
+})
 </script>
 
 <style scoped>

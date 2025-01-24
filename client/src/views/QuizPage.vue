@@ -5,10 +5,7 @@
             <div class="question">
                 <h2>{{ currentQuestion.question }}</h2>
                 <div class="options">
-                    <button 
-                        v-for="answer in currentQuestion.answers" 
-                        :key="answer.answer" 
-                        @click="selectAnswer(answer)"
+                    <button v-for="answer in currentQuestion.answers" :key="answer.answer" @click="selectAnswer(answer)"
                         :class="{ selected: selectedAnswer === answer }">
                         {{ answer.answer }}
                     </button>
@@ -35,7 +32,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import quizData from '../assets/data.json'
+import { instance as axios } from '../services/axios';
 
 // Gestion des données de la route
 const route = useRoute()
@@ -53,11 +50,16 @@ const correctAnswers = computed(() => score.value)
 const incorrectAnswers = computed(() => currentQuiz.value.questions.length - score.value)
 const correctPercentage = computed(() => (score.value / currentQuiz.value.questions.length) * 100)
 
+
 // Récupération des données du quiz
-onMounted(() => {
-    console.log("Quiz ID extrait de la route :", quizId.value)
-    currentQuiz.value = quizData.quizz.find(quiz => quiz.id === quizId.value)
-    console.log("Quiz trouvé :", currentQuiz.value)
+onMounted(async () => {
+    try {
+        const response = await axios.get(`/quizz/${quizId.value}`);
+        currentQuiz.value = response.data.quizz.find(quiz => quiz.id === quizId.value);
+        console.log("Quiz trouvé :", currentQuiz.value);
+    } catch (error) {
+        console.error("Erreur lors de la récupération du quiz :", error);
+    }
 })
 
 // Question actuelle
