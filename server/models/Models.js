@@ -29,6 +29,7 @@ db.sequelize = sequelize;
 db.Quizz = require('./Quizz.js')(sequelize, Sequelize);
 db.Question = require('./Question.js')(sequelize, Sequelize);
 db.Answer = require('./Answer.js')(sequelize, Sequelize);
+db.Users = require('./Users.js')(sequelize, Sequelize);
 
 // Configuration des relations
 Object.values(db).forEach((model) => {
