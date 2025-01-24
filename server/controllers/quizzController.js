@@ -1,4 +1,3 @@
-const Answer = require('../models/Answer');
 const db = require('../models/Models');
 
 const getAllQuizz = async (req, res) => {

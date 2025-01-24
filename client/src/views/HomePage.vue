@@ -1,6 +1,6 @@
 <template>
     <div class="pseudonym-container">
-        <h1 class="title-pseudonym">Bienvenue sur Quiz App</h1>
+        <h1 class="title-pseudonym">Bienvenue sur Answer</h1>
         <form @submit.prevent="startQuiz" class="input-group">
             <input v-model="username" type="text" placeholder="Entrez votre pseudo" required />
             <button type="submit">Commencer</button>
