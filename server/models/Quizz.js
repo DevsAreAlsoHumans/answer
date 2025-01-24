@@ -1,21 +1,20 @@
 module.exports = (sequelize, Sequelize) => {
-	const Quizz = sequelize.define('a_quizz', {
-		quizz_id: {
+	const Quizz = sequelize.define('Quizz', {
+		id: {
 			type: Sequelize.INTEGER,
-			primaryKey: true,
 			autoIncrement: true,
+			primaryKey: true,
 		},
-		quizz_name: {
+		name: {
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
-		quizz_topic: {
-			type: Sequelize.STRING,
-			allowNull: false,
-		},
-	}, {
-		timestamps:false,
 	});
+
+	// Ajout des associations
+	Quizz.associate = (models) => {
+		Quizz.hasMany(models.Question, { foreignKey: 'quizzId', onDelete: 'CASCADE' });
+	};
 
 	return Quizz;
 };

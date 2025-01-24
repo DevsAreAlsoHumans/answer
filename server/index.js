@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes');
 
 const db = require('./models/Models');
-db.sequelize.sync();
 
 const PORT = 8000;
 app.use(bodyParser.json());
