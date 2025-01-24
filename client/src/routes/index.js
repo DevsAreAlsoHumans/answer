@@ -1,13 +1,17 @@
-import Home from '../components/HelloWorld.vue';
-import { createRoute, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '../views/HomePage.vue'
+import QuizListPage from '../views/QuizListPage.vue'
+import QuizPage from '../views/QuizPage.vue'
 
 const routes = [
-    {path: '/', component: Home},
+  { path: '/', component: HomePage },
+  { path: '/quizzes', component: QuizListPage },
+  { path: '/quiz/:id', component: QuizPage, props: true }
 ]
 
-const router = createRoute({
-    history: createWebHistory(),
-    routes,
-});
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
 
-export default router;
+export default router
